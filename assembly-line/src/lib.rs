@@ -3,10 +3,10 @@
 #![allow(unused)]
 
 pub fn production_rate_per_hour(speed: u8) -> f64 {
-    match speed {
-        0..=4 => return (speed * 221) as f64,
-        5..=8 => return speed as f64 * 0.9 * 221 as f64,
-        9..=10 => return speed as f64 * 0.77 * 221 as f64,
+    speed as f64 * 221.0 * match speed {
+        0..=4 => 1.0,
+        5..=8 => 0.9,
+        9..=10 => 0.77,
         _ => return 0.0,
     }
 }
